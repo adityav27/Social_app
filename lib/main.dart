@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:social_app/screen/app_screen/home.dart';
+import 'package:social_app/screen/auth_page/login.dart';
 
 void main() {
   runApp(const MainApp());
@@ -10,11 +12,8 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
-      ),
+      debugShowCheckedModeBanner: false,
+      home: HomePage(),
     );
   }
 }
