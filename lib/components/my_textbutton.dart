@@ -3,7 +3,13 @@ import 'package:flutter/material.dart';
 class MyTextbutton extends StatelessWidget {
   final String message;
   final VoidCallback? whatToDo;
-  const MyTextbutton({super.key, required this.message, this.whatToDo});
+  final double? textSize;
+  const MyTextbutton({
+    super.key,
+    required this.message,
+    this.whatToDo,
+    this.textSize,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +23,7 @@ class MyTextbutton extends StatelessWidget {
         message,
         textAlign: TextAlign.center,
         style: TextStyle(
-          fontSize: 20,
+          fontSize: textSize ?? 20,
           fontWeight: FontWeight.bold,
           color: Colors.black,
         ),
