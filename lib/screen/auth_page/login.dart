@@ -4,6 +4,7 @@ import 'package:lottie/lottie.dart';
 import 'package:social_app/components/my_logobutton.dart';
 import 'package:social_app/components/my_textbutton.dart';
 import 'package:social_app/components/my_textfield.dart';
+import 'package:social_app/screen/auth_page/googleregister.dart';
 import 'package:social_app/screen/auth_page/load.dart';
 import 'package:social_app/screen/auth_page/register.dart';
 
@@ -85,6 +86,21 @@ class _LoginPageState extends State<LoginPage> {
     }
   }
 
+  Future<void> handleGoogleSignIn(BuildContext context) async {
+    final userCredential = await signInWithGoogle();
+    final user = userCredential?.user;
+
+    if (user != null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Signed in as ${user.displayName}')),
+      );
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Sign-in canceled or failed')),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -148,6 +164,7 @@ class _LoginPageState extends State<LoginPage> {
                       MyLogobutton(
                         message: 'Sign in with Google',
                         logoLocation: 'assets/google.png',
+                        whatToDo: () => handleGoogleSignIn(context),
                       ),
 
                       //register
