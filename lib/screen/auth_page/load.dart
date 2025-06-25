@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:lottie/lottie.dart';
-import 'package:social_app/screen/app_screen/home.dart';
+import 'package:social_app/screen/app_screen/navigation.dart';
 import 'package:social_app/screen/auth_page/login.dart';
 
 class LoadPage extends StatefulWidget {
@@ -43,9 +43,8 @@ class _LoadPageState extends State<LoadPage> with TickerProviderStateMixin {
       duration: const Duration(milliseconds: 500),
     );
 
-    // Wait for animation duration (e.g., 1500ms), then fade out splash, then fade in page.
-    // Adjust Duration to match your Lottie animation length (1.5s = 1500ms).
-    Timer(const Duration(milliseconds: 1500), () async {
+    // Wait for animation duration, then fade out splash, then fade in page.
+    Timer(const Duration(milliseconds: 1700), () async {
       // Fade out splash
       await _splashFadeController.forward();
       setState(() {
@@ -72,7 +71,7 @@ class _LoadPageState extends State<LoadPage> with TickerProviderStateMixin {
           // Underneath: the target page, fading in when ready
           FadeTransition(
             opacity: _pageFadeController,
-            child: _user != null ? const HomePage() : const LoginPage(),
+            child: _user != null ? const NavigationPage() : const LoginPage(),
           ),
 
           // On top: the splash animation overlay, until _splashDone becomes true

@@ -1,7 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:social_app/firebase_options.dart';
-import 'package:social_app/screen/app_screen/home.dart';
 import 'package:social_app/screen/auth_page/load.dart';
 
 void main() async {
@@ -15,6 +14,6 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(debugShowCheckedModeBanner: false, home: HomePage());
+    return MaterialApp(debugShowCheckedModeBanner: false, home: LoadPage());
   }
 }
